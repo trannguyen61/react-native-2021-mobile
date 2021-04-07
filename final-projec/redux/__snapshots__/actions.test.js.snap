@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login returns response dispatches LOGIN when successfully logged in 1`] = `undefined`;
+
+exports[`login returns response dispatches LOGIN_FAILED with wrong credentials 1`] = `undefined`;
+
+exports[`onFetchMovies returns actions dispatches ADDITIONAL_RESULTS_RECEIVED when has search query and page 2 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "movies": Array [],
+    },
+    "type": "ADDITIONAL_RESULTS_RECEIVED",
+  },
+]
+`;
+
+exports[`onFetchMovies returns actions dispatches ADDITIONAL_RESULTS_RECEIVED with search term and page 2 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "movies": Array [],
+    },
+    "type": "ADDITIONAL_RESULTS_RECEIVED",
+  },
+]
+`;
+
+exports[`onFetchMovies returns actions dispatches NEW_RESULTS_RECEIVED when has search query and page 1 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "maxPages": 2,
+      "movies": Array [],
+    },
+    "type": "NEW_RESULTS_RECEIVED",
+  },
+]
+`;
+
+exports[`onFetchMovies returns actions dispatches RESULTS_ERROR with incorrect arguments 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "err": "There's something wrong with the server. Please try again.",
+    },
+    "type": "RESULTS_ERROR",
+  },
+]
+`;
