@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`results reducer receives new movies 1`] = `
+Object {
+  "auth": Object {
+    "loginErr": null,
+    "token": null,
+  },
+  "results": Object {
+    "maxPages": null,
+    "movies": null,
+    "resultsErr": null,
+  },
+}
+`;
