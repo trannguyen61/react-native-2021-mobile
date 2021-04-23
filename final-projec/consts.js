@@ -1,3 +1,3 @@
-export const CORRECT_USERNAME = 'a'
+export let CORRECT_USERNAME = ['a']
 
-export const CORRECT_PASSWORD = '1'
+export let CORRECT_PASSWORD = ['1']

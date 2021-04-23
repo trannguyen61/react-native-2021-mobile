@@ -1,23 +1,32 @@
 import React from 'react'
 import { Text, TextInput, View, Button, TouchableOpacity } from 'react-native'
-import { connect } from 'react-redux';
+
+import { CORRECT_USERNAME, CORRECT_PASSWORD } from '../consts'
 
 import Styles from '../styles/app'
-import { onLogin } from '../redux/actions'
 
-class LoginScreen extends React.Component {
+class RegisterScreen extends React.Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        err: ''
     }
 
-    login = () => {
-        this.props.onLogin(this.state.username, this.state.password)
-        this.setState({username: '', password: ''})
+    register = () => {
+        console.log('here')
+        if (CORRECT_USERNAME.includes(this.state.username)) {
+            console.log('duplicated')
+            this.setState({err: 'Username has already existed.'})
+            return
+        }
+        CORRECT_USERNAME.push(this.state.username)
+        CORRECT_PASSWORD.push(this.state.password)
+        this.setState({username: '', password: '', err: ''})
+        this.navigateLogin()
     }
 
-    navigateRegister = () => {
-        this.props.navigation.navigate('Register')
+    navigateLogin = () => {
+        this.props.navigation.navigate('Login')
     }
 
     handleUsernameChange = (username) => {
@@ -37,7 +46,7 @@ class LoginScreen extends React.Component {
     render() {
         return (
             <View style={Styles.container}>
-                {this.props.loginErr ? (<Text style={Styles.error}>{this.props.loginErr}</Text>) : null}
+                {this.state.err ? (<Text style={Styles.error}>{this.state.err}</Text>) : null}
                 <TextInput
                 style={Styles.input}
                 placeholder="Username"
@@ -51,18 +60,13 @@ class LoginScreen extends React.Component {
                 onChangeText={this.handlePasswordChange}
                 secureTextEntry={true}
                 />
-                <Button color='pink' title="Log in" onPress={this.login} />
+                <Button color='pink' title="Register" onPress={this.register} />
                 <TouchableOpacity style={Styles.registerButton}>
-                    <Button color='purple' title="Haven't had an account?" onPress={this.navigateRegister}></Button>
+                    <Button color='purple' title="Already have an account?" onPress={this.navigateLogin}></Button>
                 </TouchableOpacity>
             </View>
         )
     }
 }
 
-const mapStateToProps = (state) => ({
-    token: state.auth.token,
-    loginErr: state.auth.loginErr
-});
-
-export default connect(mapStateToProps, { onLogin })(LoginScreen)
+export default RegisterScreen

@@ -54,6 +54,9 @@ export default StyleSheet.create({
       width: 200,
       height: 300,
       marginBottom: 20
+    },
+    registerButton: {
+      marginTop: 15
     }
 });
   

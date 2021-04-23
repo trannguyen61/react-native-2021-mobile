@@ -16,7 +16,8 @@ const authReducer = (state = {}, action) => {
   switch (action.type) {
     case LOGIN:
       return merge(state, {
-        token: action.payload.token
+        token: action.payload.token,
+        loginErr: null
       })
     case LOGIN_FAILED: 
       return merge(state, {
